@@ -1,0 +1,25 @@
+{
+  "name": "@cashory-demo/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@better-auth/expo": "1.5.5",
+    "@cashory-demo/db": "*",
+    "@cashory-demo/env": "*",
+    "better-auth": "1.5.5",
+    "dotenv": "^17.2.2",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@cashory-demo/config": "*",
+    "typescript": "^5"
+  }
+}

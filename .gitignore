@@ -1,0 +1,79 @@
+# ── Dependencies ──────────────────────────────────────────────
+node_modules
+.pnp
+.pnp.js
+
+# ── Build outputs ─────────────────────────────────────────────
+dist
+build
+out
+*.tsbuildinfo
+*.js.map
+
+# ── Turbo ─────────────────────────────────────────────────────
+.turbo
+
+# ── Environment variables ─────────────────────────────────────
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# ── IDEs and editors ──────────────────────────────────────────
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*~
+
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ──────────────────────────────────────────────────────
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# ── Testing ───────────────────────────────────────────────────
+coverage
+.nyc_output
+
+# ── Misc ──────────────────────────────────────────────────────
+*.tgz
+.cache
+tmp
+temp
+
+# ── Better-T-Stack ────────────────────────────────────────────
+.alchemy
+
+# ── Expo / React Native (managed workflow + prebuild) ─────────
+**/android/
+**/ios/
+**/.expo/
+**/expo-env.d.ts
+**/.expo-shared/
+
+# ── Drizzle ───────────────────────────────────────────────────
+# Keep migrations in git — they are your source of truth
+# Only ignore generated client output if you have one
+**/drizzle/meta/_journal.json   # auto-managed, optional to ignore
+
+# ── Database ──────────────────────────────────────────────────
+*.sqlite
+*.sqlite3
+*.db
+
+# ── Heroui ────────────────────────────────────────────────────
+.heroui-docs/
