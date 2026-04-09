@@ -1,12 +1,8 @@
-import { View, Text, PanResponder } from "react-native";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { View, PanResponder } from "react-native";
+import React, { useCallback, useMemo, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
-import OnboardingSplashContainer from "../containers/onboarding-splash-container";
 import OnboardingSlideContainer from "../containers/onboarding-slide-container";
 import OnboardingFinalContainer from "../containers/onboarding-final-container";
-
-const SPLASH_DURATION_MS = 1500;
 
 const onboardingSlides = [
   {
@@ -33,17 +29,8 @@ const onboardingSlides = [
 ] as const;
 
 const Onboardingtemplate = () => {
-  const [isSplashVisible, setIsSplashVisible] = useState(true);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const insets = useSafeAreaInsets();
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsSplashVisible(false);
-    }, SPLASH_DURATION_MS);
-
-    return () => clearTimeout(timeout);
-  }, []);
 
   const activeSlide = useMemo(
     () => onboardingSlides[activeSlideIndex],
@@ -57,9 +44,7 @@ const Onboardingtemplate = () => {
     });
   }, []);
 
-  const handleNext = useCallback(() => {
-    shiftSlide(1);
-  }, [shiftSlide]);
+  const handleNext = useCallback(() => shiftSlide(1), [shiftSlide]);
 
   const panResponder = useMemo(
     () =>
@@ -72,7 +57,6 @@ const Onboardingtemplate = () => {
             shiftSlide(1);
             return;
           }
-
           if (gestureState.dx <= 60) {
             shiftSlide(-1);
           }
@@ -81,36 +65,26 @@ const Onboardingtemplate = () => {
     [shiftSlide]
   );
 
-  if (isSplashVisible) {
-    return (
-      <>
-        <StatusBar style="auto" />
-        <OnboardingSplashContainer message="Cashory makes managing your money simple, secure and smart" />
-      </>
-    );
-  }
   return (
-    <>
-      <View
-        className="flex-1 bg-brand-green-500"
-        {...(activeSlide.kind === "slide" ? panResponder.panHandlers : {})}
-      >
-        {activeSlide.kind === "slide" ? (
-          <OnboardingSlideContainer
-            imageSource={activeSlide.imageSource}
-            title={activeSlide.title}
-            description={activeSlide.description}
-            onNext={handleNext}
-            bottomInset={insets.bottom}
-          />
-        ) : (
-          <OnboardingFinalContainer
-            imageSource={activeSlide.imageSource}
-            bottomInset={insets.bottom}
-          />
-        )}
-      </View>
-    </>
+    <View
+      className="flex-1 bg-brand-green-500"
+      {...(activeSlide.kind === "slide" ? panResponder.panHandlers : {})}
+    >
+      {activeSlide.kind === "slide" ? (
+        <OnboardingSlideContainer
+          imageSource={activeSlide.imageSource}
+          title={activeSlide.title}
+          description={activeSlide.description}
+          onNext={handleNext}
+          bottomInset={insets.bottom}
+        />
+      ) : (
+        <OnboardingFinalContainer
+          imageSource={activeSlide.imageSource}
+          bottomInset={insets.bottom}
+        />
+      )}
+    </View>
   );
 };
 

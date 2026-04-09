@@ -69,7 +69,7 @@ export default function OnboardingFinalContainer({
   };
 
   return (
-    <View className="flex-1 bg-brand-green-500">
+    <View className="flex-1 bg-brand-green-900">
       <View className="px-4.5 pt-13.5">
         <Image
           source={imageSource}
