@@ -1,6 +1,11 @@
 import { cn } from "heroui-native";
 import { type PropsWithChildren } from "react";
-import { ScrollView, View, type ScrollViewProps, type ViewProps } from "react-native";
+import {
+  ScrollView,
+  View,
+  type ScrollViewProps,
+  type ViewProps,
+} from "react-native";
 import Animated, { type AnimatedProps } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -31,9 +36,13 @@ export function Container({
     >
       {isScrollable ? (
         <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingBottom: insets.bottom + 120,
+          }}
           keyboardShouldPersistTaps="handled"
           contentInsetAdjustmentBehavior="automatic"
+          showsVerticalScrollIndicator={false}
           {...scrollViewProps}
         >
           {children}

@@ -69,8 +69,6 @@ export default function ProfileSetup({
   const pickImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-    console.log(status);
-
     if (status !== "granted") {
       Alert.alert(
         "Permission Required",

@@ -1,14 +1,13 @@
 import { View, Text } from "react-native";
 import React from "react";
-import SafeArea from "@/components/safe-area";
 import { useThemeColor } from "heroui-native";
-import ProfileSettingsTemplate from "@/components/templates/profile-settings-template";
+import SafeArea from "@/components/safe-area";
 
-export default function ProfileScreen() {
+export default function CategoryScreen() {
   const themeColorBackground = useThemeColor("background");
   return (
     <SafeArea style={{ backgroundColor: themeColorBackground }}>
-      <ProfileSettingsTemplate />
+      <Text>Wallet</Text>
     </SafeArea>
   );
 }
