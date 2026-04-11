@@ -45,6 +45,7 @@
 
   --dark-green: oklch(0.252 0.031 181.5); /* #0F2723 */
   --dark-charcoal-green: oklch(0.336 0.041 180.8); /* #1C3E38 */
+  --accent-card: #3c4f4b; /* Accent card #3C4F4B 20% */
 
   /* Danger Red Palette — Bright Red #E9383E */
   --brand-red-900: oklch(0.28 0.165 26.6); /* #610306 */
@@ -324,4 +325,5 @@
   /* ── Extra Custom Cashory Primitives ─────────────────────────────────────── */
   --color-dark-green: var(--dark-green);
   --color-dark-charcoal-green: var(--dark-charcoal-green);
+  --color-accent-card: var(--accent-card);
 }

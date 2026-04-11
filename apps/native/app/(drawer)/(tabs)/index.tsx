@@ -1,5 +1,12 @@
 import React from "react";
-import { Image, Pressable, ScrollView, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Image,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 import { useAuthSession } from "@/hooks/use-auth-session";
@@ -11,6 +18,11 @@ import { GeneralAlarm } from "@/components/ui/icons/GeneralAlarm";
 import { GeneralSearch } from "@/components/ui/icons/GeneralSearch";
 import { ONBOARDING_FONT_FAMILY } from "@/lib/constants/onboarding-typography";
 import CashoryCardBalance from "@/components/containers/cashory-card-balance";
+import CashoryIncomeExpense from "@/components/containers/cashory-income-expense";
+import CashoryBudgetPlanCard from "@/components/containers/cashory-budget-plan";
+import CashoryInvoiceCard from "@/components/containers/cashory-invoice-card";
+import { format } from "date-fns";
+import { mapStatus } from "@/lib/constants";
 
 export default function HomeScreen() {
   const themeColorBackground = useThemeColor("background");
@@ -21,6 +33,11 @@ export default function HomeScreen() {
   const userImage = user?.image;
   const { iconColor } = useThemeColors();
 
+  // Invoice
+  //   const { data: invoicesResponse, isLoading: isLoadingInvoices } = useInvoices({
+  //   limit: 3,
+  // });
+  // const recentInvoices = invoicesResponse?.data ?? [];
   return (
     <SafeArea style={{ backgroundColor: themeColorBackground }}>
       <Container className="p-4 md:p-6" isScrollable={false}>
@@ -98,6 +115,67 @@ export default function HomeScreen() {
                 Scan here
               </Text>
             </Pressable>
+          </View>
+
+          <View className="flex-col w-full gap-y-2.5 mb-7">
+            <CashoryIncomeExpense
+              incomeAmount={1000}
+              expenseAmount={2500}
+              dateLabel="This month"
+            />
+            <CashoryBudgetPlanCard
+              month={"Jan"}
+              onMonthChange={() => {}}
+              availableCash={4000}
+            />
+          </View>
+
+          <View className="flex-col w-full gap-y-2.5 mb-7">
+            <View className="flex-row items-end justify-between w-full mb-1">
+              <Text
+                className="text-lg leading leading-6.25 text-brand-black dark:text-brand-white"
+                style={{ fontFamily: "PlusJakartaSans_700Bold" }}
+              >
+                Invoice
+              </Text>
+
+              <Link href="/invoices" asChild>
+                <Pressable>
+                  <Text
+                    className="text-[14px] leading-3.75 text-brand-black dark:text-brand-white"
+                    style={{ fontFamily: "PlusJakartaSans_400Regular" }}
+                  >
+                    See all
+                  </Text>
+                </Pressable>
+              </Link>
+            </View>
+
+            {/* {isLoadingInvoices ? (
+            <View className="items-center py-6">
+              <ActivityIndicator size="small" />
+            </View>
+          ) : recentInvoices.length === 0 ? (
+            <View className="items-center py-6">
+              <Text
+                className="text-[13px] text-brand-grey dark:text-gray-400"
+                style={{ fontFamily: "PlusJakartaSans_400Regular" }}
+              >
+                No invoices yet
+              </Text>
+            </View>
+          ) : (
+            recentInvoices.map((inv: any) => (
+              <CashoryInvoiceCard
+                key={inv.id}
+                title={inv.clientName || inv.invoiceNumber}
+                datetime={format(new Date(inv.createdAt), "yyyy-MM-dd HH:mm")}
+                amount={inv.total}
+                status={mapStatus(inv.status)}
+                onPress={() => router.push(`/invoice/${inv.id}`)}
+              />
+            ))
+          )} */}
           </View>
         </ScrollView>
       </Container>
