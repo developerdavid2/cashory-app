@@ -14,6 +14,7 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 
 import { AppThemeProvider } from "@/contexts/app-theme-context";
 import { ReactQueryProvider } from "@/lib/react-query";
+import { StatusBar } from "expo-status-bar";
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -21,8 +22,16 @@ export const unstable_settings = {
 
 function StackLayout() {
   return (
-    <Stack screenOptions={{}}>
+    <Stack
+      screenOptions={{
+        contentStyle: { backgroundColor: "black" }, // ✅ add this
+      }}
+    >
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+      <Stack.Screen name="sign-up" options={{ headerShown: false }} />
+      <Stack.Screen name="sign-in" options={{ headerShown: false }} />
+      <Stack.Screen name="onboarding" options={{ headerShown: false }} />
       <Stack.Screen
         name="modal"
         options={{ title: "Modal", presentation: "modal" }}
@@ -47,6 +56,7 @@ export default function Layout() {
         <KeyboardProvider>
           <AppThemeProvider>
             <HeroUINativeProvider>
+              <StatusBar style="auto" />
               <StackLayout />
             </HeroUINativeProvider>
           </AppThemeProvider>

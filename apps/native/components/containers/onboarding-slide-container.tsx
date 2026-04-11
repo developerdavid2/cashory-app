@@ -6,6 +6,7 @@ import {
 } from "react-native";
 import OnboardingContentCard from "../base/onboarding-content-card";
 import OnboardingNextButton from "../base/onboarding-next-button";
+import { useThemeColor } from "heroui-native";
 
 interface OnboardingSlideContainerProps {
   imageSource: ImageSourcePropType;
@@ -51,7 +52,7 @@ export default function OnboardingSlideContainer({
   const buttonTop = DESIGN_SIZE.buttonTop * scaleY;
 
   return (
-    <View className="flex-1 bg-brand-green-500">
+    <View className="flex-1 bg-brand-green-900">
       <Image
         source={imageSource}
         resizeMode="contain"

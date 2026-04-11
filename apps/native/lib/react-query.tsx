@@ -8,10 +8,14 @@ import NetInfo from "@react-native-community/netinfo";
 
 function NetWorkListener() {
   useEffect(() => {
+    onlineManager.setOnline(true); // ← this is the critical line
+
     return NetInfo.addEventListener((state) => {
-      onlineManager.setOnline(
-        !!state.isConnected && !!state.isInternetReachable
-      );
+      const isOnline =
+        state.isConnected === true &&
+        (state.isInternetReachable === null ||
+          state.isInternetReachable === true);
+      onlineManager.setOnline(isOnline);
     });
   }, []);
 
