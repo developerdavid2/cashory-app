@@ -1,28 +1,18 @@
-import React from "react";
-import {
-  ActivityIndicator,
-  Image,
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Link } from "expo-router";
-import { useAuthSession } from "@/hooks/use-auth-session";
-import { useThemeColors } from "@/hooks/use-theme-colors";
-import { Avatar, useThemeColor } from "heroui-native";
 import { Container } from "@/components/container";
+import CashoryBudgetPlanCard from "@/components/containers/cashory-budget-plan";
+import CashoryCardBalance from "@/components/containers/cashory-card-balance";
+import CashoryIncomeExpense from "@/components/containers/cashory-income-expense";
 import SafeArea from "@/components/safe-area";
 import { GeneralAlarm } from "@/components/ui/icons/GeneralAlarm";
 import { GeneralSearch } from "@/components/ui/icons/GeneralSearch";
+import { useAuthSession } from "@/hooks/use-auth-session";
+import { useThemeColors } from "@/hooks/use-theme-colors";
 import { ONBOARDING_FONT_FAMILY } from "@/lib/constants/onboarding-typography";
-import CashoryCardBalance from "@/components/containers/cashory-card-balance";
-import CashoryIncomeExpense from "@/components/containers/cashory-income-expense";
-import CashoryBudgetPlanCard from "@/components/containers/cashory-budget-plan";
-import CashoryInvoiceCard from "@/components/containers/cashory-invoice-card";
-import { format } from "date-fns";
-import { mapStatus } from "@/lib/constants";
+import { Link } from "expo-router";
+import { Avatar, useThemeColor } from "heroui-native";
+import React from "react";
+import { Image, Pressable, ScrollView, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   const themeColorBackground = useThemeColor("background");

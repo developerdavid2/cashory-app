@@ -29,6 +29,7 @@ function StackLayout() {
     >
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+      <Stack.Screen name="profile-settings" options={{ headerShown: false }} />
       <Stack.Screen name="sign-up" options={{ headerShown: false }} />
       <Stack.Screen name="sign-in" options={{ headerShown: false }} />
       <Stack.Screen name="invoices" options={{ headerShown: false }} />
