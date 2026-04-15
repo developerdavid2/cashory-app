@@ -1,5 +1,6 @@
 import { relations } from "drizzle-orm";
 import { account, session, user } from "./auth";
+import { category } from "./category";
 
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
@@ -19,3 +20,12 @@ export const accountRelations = relations(account, ({ one }) => ({
     references: [user.id],
   }),
 }));
+
+// export const categoryRelations = relations(category, ({one, mnay}) => ({
+//   user: one(user, {
+//     fields: [category.userId],
+//     references: [user.id]
+//   }),
+//   transactions: many(transactions),
+//   budget: many(budget)
+// }))

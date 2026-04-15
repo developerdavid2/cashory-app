@@ -89,7 +89,11 @@ export default function CashoryBudgetPlanCard({
 
             <Select.Portal>
               <Select.Overlay className="bg-brand-black/40" />
-              <Select.Content presentation="bottom-sheet" className="pb-8">
+              <Select.Content
+                presentation="bottom-sheet"
+                className="pb-8"
+                backgroundClassName="bg-brand-white dark:bg-[#101c18] rounded-t-[40px]"
+              >
                 {months.map((m) => (
                   <Select.Item key={m} value={m} label={`Budget for ${m}`}>
                     <Select.ItemLabel className="text-brand-black dark:text-brand-white/80" />
