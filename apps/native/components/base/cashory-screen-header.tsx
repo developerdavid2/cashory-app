@@ -38,7 +38,7 @@ export default function CashoryScreenHeader({
                 router.back();
               }
             }}
-            className="w-12.5 h-12.5 rounded-[40px] bg-brand-flashwhite dark:bg-dark-charcoal-green items-center justify-center"
+            className="w-12.5 h-12.5 rounded-[40px] bg-brand-flashwhite dark:bg-accent-card items-center justify-center"
           >
             <Ionicons
               name="chevron-back"

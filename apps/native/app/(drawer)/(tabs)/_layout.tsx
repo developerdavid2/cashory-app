@@ -6,7 +6,7 @@ import AndroidTabs from "@/components/navigation/_android-tabs";
 import IOSTabs from "@/components/navigation/_ios-tabs";
 import CashoryAddTransactionModal from "@/components/containers/cashory-add-transaction-modal";
 
-export default function TabLayout() {
+const TabLayout = () => {
   const [isAddTransactionVisible, setAddTransactionVisible] = useState(false);
 
   // The FAB callbacks are passed down so both platforms handle them identically.
@@ -30,4 +30,6 @@ export default function TabLayout() {
       />
     </>
   );
-}
+};
+
+export default TabLayout;

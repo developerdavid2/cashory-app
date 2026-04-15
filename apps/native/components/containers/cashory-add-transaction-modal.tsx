@@ -42,17 +42,17 @@ export default function CashoryAddTransactionModal({
   return (
     <BottomSheet isOpen={visible} onOpenChange={(open) => !open && onClose()}>
       <BottomSheet.Portal>
-        <BottomSheet.Overlay />
+        <BottomSheet.Overlay className="bg-brand-black/40" />
         <BottomSheet.Content
           snapPoints={["80%"]}
           enablePanDownToClose={true}
-          backgroundClassName="bg-brand-white dark:bg-dark-green rounded-t-[40px]"
+          backgroundClassName="bg-brand-white dark:bg-[#101c18] rounded-t-[40px]"
           style={{ paddingBottom: Math.max(insets.bottom + 20, 34) }}
           className="pt-11"
         >
           {/* Header */}
           <View className="flex-row items-center gap-x-2.5 mb-6">
-            <View className="w-12.5 h-12.5 rounded-[40px] items-center justify-center bg-brand-flashwhite dark:bg-dark-charcoal-green">
+            <View className="w-12.5 h-12.5 rounded-[40px] items-center justify-center bg-brand-flashwhite dark:bg-accent-card/15">
               <StyledGeneralEdit
                 color={themeColorForeground}
                 width={24}
@@ -78,7 +78,7 @@ export default function CashoryAddTransactionModal({
           >
             <RadioGroup.Item
               value="income"
-              className="flex-row items-center justify-between w-full bg-brand-flashwhite dark:bg-dark-charcoal-green rounded-[30px] p-4"
+              className="flex-row items-center justify-between w-full bg-brand-flashwhite dark:bg-accent-card/15 rounded-2xl p-4"
               style={{
                 shadowColor: "rgba(139, 138, 138, 0.12)",
                 shadowOffset: { width: -1, height: -5 },
@@ -88,7 +88,7 @@ export default function CashoryAddTransactionModal({
               }}
             >
               <View className="flex-row items-center gap-x-2.5">
-                <View className="w-12.5 h-12.5 rounded-[40px] items-center justify-center bg-brand-white dark:bg-dark-green">
+                <View className="w-12.5 h-12.5 rounded-[40px] items-center justify-center bg-brand-white dark:bg-accent-card">
                   <StyledGeneralArrowUpRi
                     color={themeColorForeground}
                     width={24}
@@ -107,7 +107,7 @@ export default function CashoryAddTransactionModal({
 
             <RadioGroup.Item
               value="expense"
-              className="flex-row items-center justify-between w-full bg-brand-flashwhite dark:bg-dark-charcoal-green rounded-[30px] p-4"
+              className="flex-row items-center justify-between w-full bg-brand-flashwhite dark:bg-accent-card/15 rounded-2xl p-4"
               style={{
                 shadowColor: "rgba(139, 138, 138, 0.12)",
                 shadowOffset: { width: -1, height: -5 },
@@ -117,7 +117,7 @@ export default function CashoryAddTransactionModal({
               }}
             >
               <View className="flex-row items-center gap-x-2.5">
-                <View className="w-12.5 h-12.5 rounded-[40px] items-center justify-center bg-brand-white dark:bg-dark-green">
+                <View className="w-12.5 h-12.5 rounded-[40px] items-center justify-center bg-brand-white dark:bg-accent-card">
                   <StyledGeneralArrowUpLe
                     color={themeColorForeground}
                     width={24}
