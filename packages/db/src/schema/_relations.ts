@@ -1,8 +1,11 @@
 import { relations } from "drizzle-orm";
-import { account, session, user } from "./auth";
+import { user, session, account } from "./auth";
 import { category } from "./category";
+import { wallet } from "./wallet";
 import { transaction } from "./transaction";
 import { budget } from "./budget";
+import { notification } from "./notification";
+import { invoice, invoiceItem } from "./invoice";
 
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
@@ -29,5 +32,54 @@ export const categoryRelations = relations(category, ({ one, many }) => ({
     references: [user.id],
   }),
   transactions: many(transaction),
-  budget: many(budget),
+  budgets: many(budget),
+}));
+
+export const walletRelations = relations(wallet, ({ one, many }) => ({
+  user: one(user, {
+    fields: [wallet.userId],
+    references: [user.id],
+  }),
+  transactions: many(transaction),
+}));
+
+export const transactionRelations = relations(transaction, ({ one }) => ({
+  user: one(user, {
+    fields: [transaction.userId],
+    references: [user.id],
+  }),
+  wallet: one(wallet, {
+    fields: [transaction.walletId],
+    references: [wallet.id],
+  }),
+  category: one(category, {
+    fields: [transaction.categoryId],
+    references: [category.id],
+  }),
+}));
+
+export const budgetRelations = relations(budget, ({ one }) => ({
+  user: one(user, {
+    fields: [budget.userId],
+    references: [user.id],
+  }),
+  category: one(category, {
+    fields: [budget.categoryId],
+    references: [category.id],
+  }),
+}));
+
+export const invoiceRelations = relations(invoice, ({ one, many }) => ({
+  user: one(user, {
+    fields: [invoice.userId],
+    references: [user.id],
+  }),
+  items: many(invoiceItem),
+}));
+
+export const notificationRelations = relations(notification, ({ one }) => ({
+  user: one(user, {
+    fields: [notification.userId],
+    references: [user.id],
+  }),
 }));
