@@ -5,6 +5,8 @@ import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import { categoryRoutes } from "./routes/category.routes";
 import { walletRoutes } from "./routes/wallet.routes";
+import { transactionRoutes } from "./routes/transaction.routes";
+import { budgetRoutes } from "./routes/budget.routes";
 
 const app = new Hono()
   .use(logger())
@@ -15,11 +17,13 @@ const app = new Hono()
       allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
       allowHeaders: ["Content-Type", "Authorization", "Cookie"],
       credentials: true,
-    })
+    }),
   )
   .on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw))
   .route("/api/category", categoryRoutes)
-  .route("/api/wallet", walletRoutes);
+  .route("/api/wallet", walletRoutes)
+  .route("/api/budget", budgetRoutes)
+  .route("/api/transaction", transactionRoutes);
 
 app.onError((err, c) => {
   console.error("[Server Error]", err);
@@ -28,7 +32,7 @@ app.onError((err, c) => {
       error: err.message || "Internal Server Errror",
       ...(env.NODE_ENV === "development" ? { stack: err.stack } : {}),
     },
-    500
+    500,
   );
 });
 
