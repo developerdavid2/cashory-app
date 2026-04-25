@@ -12,6 +12,7 @@ import {
 } from "@cashory-demo/schema/category.schema";
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
+
 export const categoryRoutes = new Hono()
   .use(authMiddleware)
   .get("/", zValidator("query", listCategorySchema), async (c) => {
@@ -36,7 +37,7 @@ export const categoryRoutes = new Hono()
     if (!data) {
       return c.json(
         { error: "Category not found or is a system category" },
-        404
+        404,
       );
     }
 
@@ -50,7 +51,7 @@ export const categoryRoutes = new Hono()
     if (!data) {
       return c.json(
         { error: "Category not found or is a system category" },
-        404
+        404,
       );
     }
 

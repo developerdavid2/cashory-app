@@ -32,7 +32,7 @@ export function WalletCard({ wallet, onDelete }: WalletCardProps) {
       variant="secondary"
       className="mb-3 rounded-[20px] p-0 overflow-hidden"
     >
-      <Card.Body className="flex-row items-center justify-between p-4 bg-brand-flashwhite dark:bg-brand-green-500">
+      <Card.Body className="flex-row items-center justify-between p-4 bg-brand-white/70 dark:bg-accent-card/15">
         <View className="flex-row items-center gap-x-3">
           <Surface
             variant="tertiary"
@@ -50,7 +50,7 @@ export function WalletCard({ wallet, onDelete }: WalletCardProps) {
               {wallet.name} {wallet.isDefault && "⭐"}
             </Card.Title>
             <Card.Description
-              className="text-body-sm leading-4 text-brand-silver mt-1 capitalize"
+              className="text-body-sm leading-4 text-gray-400 mt-1 capitalize"
               style={{ fontFamily: "PlusJakartaSans_500Medium" }}
             >
               {wallet.type} • {wallet.currency}
