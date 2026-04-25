@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { Button, Card, Surface, useThemeColor } from "heroui-native";
+import { Button, Card, Chip, cn, Surface, useThemeColor } from "heroui-native";
 import { Category } from "@cashory-demo/schema/category.schema";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -15,13 +15,13 @@ export default function CategoryItem({
   return (
     <Card
       variant="secondary"
-      className="mb-3 rounded-[20px] p-0 overflow-hidden bg-accent-card/10 dark:bg-accent-card/15"
+      className="mb-3 rounded-[20px] p-0 overflow-hidden bg-brand-white/70 dark:bg-accent-card/15"
     >
       <Card.Body className="flex-row items-center justify-between p-4 ">
         <View className="flex-row items-center gap-x-3">
           <Surface
             variant="tertiary"
-            className="w-10 h-10 rounded-[20px] items-center justify-center bg-brand-white dark:bg-dark-charcoal-green"
+            className="w-10 h-10 rounded-[20px] items-center justify-center bg-brand-white/30 dark:bg-dark-charcoal-green"
           >
             <Text className="text-h4 font-bold">{item.emoji || "🏷️"}</Text>
           </Surface>
@@ -32,12 +32,25 @@ export default function CategoryItem({
             >
               {item.name}
             </Card.Title>
-            <Card.Description
-              className="text-body-sm leading-4 text-brand-silver mt-1"
-              style={{ fontFamily: "PlusJakartaSans_500Medium" }}
+            <Chip
+              className={cn(
+                "px-2 mt-2",
+                item.type === "income"
+                  ? "bg-brand-green-100/40 dark:bg-emerald-200/20"
+                  : "bg-brand-orange-100/40 dark:bg-orange-400/20",
+              )}
             >
-              {item.type === "expense" ? "Expense" : "Income"}
-            </Card.Description>
+              <Chip.Label
+                className={cn(
+                  "",
+                  item.type === "income"
+                    ? "text-brand-green-400 dark:text-emerald-600"
+                    : "text-brand-orange-400 dark:text-amber-600",
+                )}
+              >
+                {item.type === "expense" ? "Expense" : "Income"}
+              </Chip.Label>
+            </Chip>
           </View>
         </View>
         {!item.isSystem && (

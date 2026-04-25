@@ -86,6 +86,7 @@ export default function CategoryTemplate() {
         onOpenChange={setAddModalVisible}
       />
 
+      {/* Delete Dialog */}
       <Dialog
         isOpen={isDeleteModalVisible}
         onOpenChange={setDeleteModalVisible}
