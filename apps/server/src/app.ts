@@ -7,6 +7,8 @@ import { categoryRoutes } from "./routes/category.routes";
 import { walletRoutes } from "./routes/wallet.routes";
 import { transactionRoutes } from "./routes/transaction.routes";
 import { budgetRoutes } from "./routes/budget.routes";
+import { notificationRoutes } from "./routes/notification.routes";
+import { invoiceRoutes } from "./routes/invoice.route";
 
 const app = new Hono()
   .use(logger())
@@ -23,7 +25,9 @@ const app = new Hono()
   .route("/api/category", categoryRoutes)
   .route("/api/wallet", walletRoutes)
   .route("/api/budget", budgetRoutes)
-  .route("/api/transaction", transactionRoutes);
+  .route("/api/transaction", transactionRoutes)
+  .route("/api/notification", notificationRoutes)
+  .route("/api/invoice", invoiceRoutes);
 
 app.onError((err, c) => {
   console.error("[Server Error]", err);
