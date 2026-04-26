@@ -27,7 +27,7 @@ export const TABS: TabItem[] = [
     name: "reports",
     label: "Reports",
     sf: { default: "chart.pie", selected: "chart.pie.fill" },
-    md: "pie-chart", // ✅ FIXED
+    md: "pie-chart",
   },
   {
     name: "profile",

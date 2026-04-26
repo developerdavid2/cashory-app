@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api } from "@/lib/api-client";
+import { apiClient } from "@/lib/api-client";
 import { queryKeys } from "@/lib/query-keys";
-import { CreateInvoiceInput } from "@cashory-demo/schema";
+import { CreateInvoiceInput } from "@cashory-demo/schema/invoice.schema";
 
 interface InvoiceListParams {
   [key: string]: unknown;
@@ -14,7 +14,7 @@ export function useInvoices(params?: InvoiceListParams) {
   return useQuery({
     queryKey: queryKeys.invoices.list(params),
     queryFn: async () => {
-      const res = await api.api.invoice.$get({
+      const res = await apiClient.api.invoice.$get({
         query: {
           page: String(params?.page ?? 1),
           limit: String(params?.limit ?? 20),
@@ -31,7 +31,7 @@ export function useInvoice(id: string) {
   return useQuery({
     queryKey: queryKeys.invoices.detail(id),
     queryFn: async () => {
-      const res = await api.api.invoice[":id"].$get({ param: { id } });
+      const res = await apiClient.api.invoice[":id"].$get({ param: { id } });
       if (!res.ok) throw new Error("Invoice not found");
       return res.json();
     },
@@ -46,7 +46,7 @@ export function useCreateInvoice() {
 
   return useMutation({
     mutationFn: async (data: CreateInvoiceInput) => {
-      const res = await api.api.invoice.$post({ json: data });
+      const res = await apiClient.api.invoice.$post({ json: data });
       if (!res.ok) {
         let errMessage = "Failed to create invoice";
         try {
@@ -75,7 +75,7 @@ export function useUpdateInvoiceStatus() {
       id: string;
       status: "draft" | "sent" | "paid" | "overdue" | "cancelled";
     }) => {
-      const res = await api.api.invoice[":id"].status.$patch({
+      const res = await apiClient.api.invoice[":id"].status.$patch({
         param: { id },
         json: { status },
       });
@@ -93,7 +93,7 @@ export function useDeleteInvoice() {
 
   return useMutation({
     mutationFn: async (id: string) => {
-      const res = await api.api.invoice[":id"].$delete({ param: { id } });
+      const res = await apiClient.api.invoice[":id"].$delete({ param: { id } });
       if (!res.ok) throw new Error("Failed to delete invoice");
       return res.json();
     },

@@ -30,13 +30,13 @@ export default function CashoryAddTransactionModal({
   const themeColorForeground = useThemeColor("foreground");
 
   const [selectedType, setSelectedType] = useState<"income" | "expense">(
-    "income"
+    "income",
   );
 
   const handleCreate = () => {
     onClose();
     onCreate(selectedType);
-    // router.push(`/transaction/add?type=${selectedType}`);
+    router.push(`/transaction/add?type=${selectedType}`);
   };
 
   return (
