@@ -38,7 +38,7 @@ export default function CashoryBudgetPlanCard({
     <Card
       className={cn(
         "rounded-2xl bg-white/60 dark:bg-accent-card/15 p-4 flex-row items-center justify-between border-0 w-full min-h-17.75",
-        className
+        className,
       )}
       style={{
         borderCurve: "continuous",
@@ -67,7 +67,7 @@ export default function CashoryBudgetPlanCard({
             presentation="bottom-sheet"
           >
             <Select.Trigger
-              className="flex-row items-center gap-x-1 w-[80%] shadow-none bg-transparent rounded-2xl! p-0"
+              className="flex-row items-center w-full shadow-none bg-transparent rounded-2xl! p-0"
               style={{ paddingHorizontal: 0 }}
             >
               <Select.Value

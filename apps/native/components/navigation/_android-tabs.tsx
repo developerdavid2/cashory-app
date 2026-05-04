@@ -7,7 +7,7 @@ import useAuthTheme from "@/hooks/use-auth-theme";
 import { TABS } from "@/lib/constants/tab-config";
 import { GeneralEdit } from "../ui/icons/GeneralEdit";
 
-const TAB_ICON_HEIGHT = 78;
+const TAB_ICON_HEIGHT = 60;
 
 function TabIcon({
   name,
@@ -68,7 +68,7 @@ export default function AndroidTabs({ onFabPress }: AndroidTabsProp) {
 
   const isGesture = loading
     ? insets.bottom > 0
-    : navigationMode?.isGestureNavigation ?? false;
+    : (navigationMode?.isGestureNavigation ?? false);
 
   const tabBottom = Math.max(20, insets.bottom + 4);
 
